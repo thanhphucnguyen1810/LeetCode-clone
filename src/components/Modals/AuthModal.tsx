@@ -8,7 +8,6 @@ import { authModalState } from '~/atoms/authModalAtom';
 
 
 type AuthModalProps = {
-  
 
 };
 

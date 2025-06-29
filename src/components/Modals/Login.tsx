@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { authModalState } from '~/atoms/authModalAtom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '~/firebase/firebase';
+import { toast } from 'react-toastify';
 
 type LoginProps = {};
 
@@ -27,12 +28,12 @@ const Login: React.FC<LoginProps> = () => {
       if(!newUser) return;
       router.push('/')
     } catch (error: any) {
-      alert(error.message);
+      toast.error(error.message, { position: 'top-center', autoClose: 3000, theme: 'dark' })
     }
   }
 
   useEffect(() => {
-    if(error)  alert(error.message);
+    if(error)  toast.error(error.message, { position: 'top-center', autoClose: 3000, theme: 'dark' })
   }, [error]);
 
   return (
@@ -85,7 +86,7 @@ const Login: React.FC<LoginProps> = () => {
 
       <button className="flex w-full justify-end" onClick={() => handleClick("forgotPassword")}>
         <a
-          href="/auth/forgot-password"
+          href="#"
           className="text-sm block text-brand-orange hover:underline w-full text-right"
         >
           Forgot Password?
